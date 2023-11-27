@@ -8,7 +8,6 @@ const percentageAt50 = 0.5 * maxCapacity
 const amountOfPlants = 20
 
 
-
 // PART ONE
 // Predict the plant growth after a specific number of weeks
 
@@ -48,7 +47,7 @@ console.log(`This action should be taken at week 3: ${whatAction(3)}`);
 function spaceNeededFor(numOfWeeks) {
     const startingPlantNum = 100
     const growthRate = 2;
-    const growthRatePerWeek = growthRate ** numOfWeeks * startingPlantNum
+    const growthRatePerWeek = (growthRate ** numOfWeeks) * startingPlantNum
     return growthRatePerWeek * spacePerPlant
 }
 
@@ -56,9 +55,21 @@ console.log(`Additional space needed after 10 weeks: ${spaceNeededFor(10)}m^2`);
 
 /* If the space remained circular, what would be the radius of this expanded garden? */
 
-function radiusOfTheCircle(numOfPlantsYouHave) {
-    const radiusWithinCircle = (spaceNeededFor(10) / pI)**(1/2)
-    return radiusWithinCircle
+function radiusOfTheCircle() {
+    return (spaceNeededFor(10) / pI) ** (1 / 2)
 }
 
 console.log(`The radius of the circle would be ${radiusOfTheCircle(100)}`);
+
+//Part 3 Try catch error
+
+let x = 100; 
+try {
+  if (x < maxCapacity) {
+    console.log("Will fit");
+  } else {
+    throw "Error - Will not fit";
+  }
+} catch (err) {
+  console.log(err);
+}
